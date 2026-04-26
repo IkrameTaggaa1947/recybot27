@@ -330,32 +330,73 @@
         }
 
         function parseAndRender(csvText) {
-            const lines = csvText.trim().split('\\n');
+            const lines = csvText.trim().split('\n');
+            if (lines.length < 2) {
+                statsGrid.innerHTML = '<p>Pas de données à afficher.</p>';
+                return;
+            }
+
             const headers = lines[0].split(',').map(h => h.trim());
-            const rows = lines.slice(1).map(line => line.split(',').map(l => l.trim()));
-
-            // Vider les anciennes cartes
-            statsGrid.innerHTML = '';
-
-            headers.forEach((header, index) => {
-                // Vérifier si la colonne est numérique
-                const isNumericColumn = rows.every(row => !isNaN(parseFloat(row[index])));
-
-                if (isNumericColumn) {
-                    const total = rows.reduce((sum, row) => {
-                        const value = parseFloat(row[index]);
-                        return sum + (isNaN(value) ? 0 : value);
-                    }, 0);
-
-                    const card = document.createElement('div');
-                    card.className = 'stat-card';
-                    card.innerHTML = `
-                        <h3>${header.replace(/_/g, ' ')}</h3>
-                        <div class="value">${total.toLocaleString('fr-FR')}</div>
-                    `;
-                    statsGrid.appendChild(card);
-                }
+            const rows = lines.slice(1).map(line => {
+                const values = line.split(',');
+                let rowData = {};
+                headers.forEach((header, index) => {
+                    rowData[header] = values[index] ? values[index].trim() : '';
+                });
+                return rowData;
             });
+
+            // --- Calculs ---
+            const totalBouteilles = rows.length;
+
+            const countBy = (column, value) => rows.filter(r => r[column] === value).length;
+            const acceptedCount = countBy('Statut', 'Acceptée');
+            const rejectedCount = countBy('Statut', 'Rejetée');
+            const withCapCount = countBy('Avec_bouchon', 'OUI');
+            const withoutCapCount = countBy('Avec_bouchon', 'NON');
+            const emptyCount = countBy('Etat_Remplissage', 'Vide');
+            const filledCount = countBy('Etat_Remplissage', 'Remplie');
+
+            const latestTimestamp = rows.reduce((latest, row) => {
+                const current = new Date(row['Timestamp']);
+                return current > latest ? current : latest;
+            }, new Date(0));
+
+            // --- Affichage ---
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <h3>Total Bouteilles</h3>
+                    <div class="value">${totalBouteilles}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Acceptées</h3>
+                    <div class="value">${acceptedCount}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Rejetées</h3>
+                    <div class="value">${rejectedCount}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Avec Bouchon</h3>
+                    <div class="value">${withCapCount}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Sans Bouchon</h3>
+                    <div class="value">${withoutCapCount}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Bouteilles Vides</h3>
+                    <div class="value">${emptyCount}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Bouteilles Remplies</h3>
+                    <div class="value">${filledCount}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Dernière Détection</h3>
+                    <div class="value" style="font-size: 24px;">${latestTimestamp.toLocaleString('fr-FR')}</div>
+                </div>
+            `;
 
             // Mettre à jour l'heure
             const now = new Date();
