@@ -26,6 +26,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Upload the entire repository
           path: './frontend'
 
       - name: Deploy to GitHub Pages

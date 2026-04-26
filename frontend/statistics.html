@@ -240,40 +240,40 @@
             return { headers, rows };
         }
 
-    function createStatCard(title, value) {
-        return `
+        function createStatCard(title, value) {
+            return `
           <div style="background:#f7fdf9;border:1px solid #e2f0e8;border-radius:16px;padding:20px;">
             <p style="font-size:13px;color:#555570;margin-bottom:6px;">${title}</p>
             <p style="font-size:28px;font-weight:600;color:#1a1a2e;">${value}</p>
           </div>`;
-    }
-
-    async function fetchAndRender() {
-      try {
-        const res = await fetch(CSV_URL, { cache: 'no-store' });
-        if (!res.ok) {
-            throw new Error(`Failed to fetch data: ${res.statusText}`);
         }
-        const text = await res.text();
-        const { headers, rows } = parseCSV(text);
 
-        // Calculate specific statistics
-        const totalBottles = rows.length;
-        const acceptedBottles = rows.filter(r => r.Statut && r.Statut.toLowerCase() === 'accepted').length;
-        const rejectedBottles = totalBottles - acceptedBottles;
-        const bottlesWithCap = rows.filter(r => r.Bouteille_Avec_Bouchon && (r.Bouteille_Avec_Bouchon.toLowerCase() === 'true' || r.Bouteille_Avec_Bouchon === '1')).length;
+        async function fetchAndRender() {
+            try {
+                const res = await fetch(CSV_URL, { cache: 'no-store' });
+                if (!res.ok) {
+                    throw new Error(`Failed to fetch data: ${res.statusText}`);
+                }
+                const text = await res.text();
+                const { headers, rows } = parseCSV(text);
 
-        const grid = document.getElementById('stats-grid');
-        grid.innerHTML = ''; // Clear previous stats
-        grid.innerHTML += createStatCard('Bouteilles Traitées', totalBottles);
-        grid.innerHTML += createStatCard('Bouteilles Acceptées', acceptedBottles);
-        grid.innerHTML += createStatCard('Bouteilles Rejetées', rejectedBottles);
-        grid.innerHTML += createStatCard('Bouteilles avec Bouchon', bottlesWithCap);
+                // Calculate specific statistics
+                const totalBottles = rows.length;
+                const acceptedBottles = rows.filter(r => r.Statut && r.Statut.toLowerCase() === 'accepted').length;
+                const rejectedBottles = totalBottles - acceptedBottles;
+                const bottlesWithCap = rows.filter(r => r.Bouteille_Avec_Bouchon && (r.Bouteille_Avec_Bouchon.toLowerCase() === 'true' || r.Bouteille_Avec_Bouchon === '1')).length;
 
-        document.getElementById('last-update').textContent =
-          'Dernière mise à jour : ' + new Date().toLocaleTimeString();
-      } catch (error) {
-        console.error('Error fetching or rendering stats:', error);
-        document.getElementById('stats-grid').innerHTML = `<p style="color: red;">Could not load statistics. ${error.message}</p>`;
-      }
-</html>
+                const grid = document.getElementById('stats-grid');
+                grid.innerHTML = ''; // Clear previous stats
+                grid.innerHTML += createStatCard('Bouteilles Traitées', totalBottles);
+                grid.innerHTML += createStatCard('Bouteilles Acceptées', acceptedBottles);
+                grid.innerHTML += createStatCard('Bouteilles Rejetées', rejectedBottles);
+                grid.innerHTML += createStatCard('Bouteilles avec Bouchon', bottlesWithCap);
+
+                document.getElementById('last-update').textContent =
+                    'Dernière mise à jour : ' + new Date().toLocaleTimeString();
+            } catch (error) {
+                console.error('Error fetching or rendering stats:', error);
+                document.getElementById('stats-grid').innerHTML = `<p style="color: red;">Could not load statistics. ${error.message}</p>`;
+            }
+</html >
