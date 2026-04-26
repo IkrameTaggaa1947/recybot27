@@ -9,14 +9,6 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap"
         rel="stylesheet" />
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         :root {
             --green: #2ecc71;
             --green-dark: #27ae60;
@@ -32,6 +24,14 @@
             --shadow: 0 4px 24px rgba(46, 204, 113, 0.08);
             --shadow-lg: 0 12px 40px rgba(46, 204, 113, 0.12);
             --radius: 16px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
@@ -72,16 +72,11 @@
         .nav-logo .logo-icon {
             width: 32px;
             height: 32px;
-            background: var(--green);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .nav-logo .logo-icon img {
-            width: 32px;
-            height: 32px;
+            width: 96px;
+            height: 96px;
         }
 
         .nav-right {
@@ -106,38 +101,22 @@
             color: var(--green-dark);
         }
 
-        section {
-            padding: 80px 48px;
+        main {
+            padding: 60px 48px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 40px;
-            font-weight: 400;
-            color: var(--text);
-            margin-bottom: 14px;
-            line-height: 1.2;
-        }
-
-        .section-sub {
-            color: var(--text-light);
-            font-size: 15px;
-            max-width: 600px;
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 48px;
-            line-height: 1.7;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .text-center {
-            text-align: center;
-        }
-
-        .text-center .section-sub {
-            margin: 0 auto 48px;
-        }
-
-        .pill {
+        .title-block .pill {
             display: inline-block;
             background: var(--green);
             color: white;
@@ -150,41 +129,112 @@
             margin-bottom: 20px;
         }
 
+        .title-block .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 40px;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+
+        .title-block .section-sub {
+            color: var(--text-light);
+            font-size: 15px;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--green);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        .live-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--green-dark);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            }
+        }
+
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 24px;
         }
 
-        .card {
+        .stat-card {
             background: var(--card);
             border-radius: var(--radius);
-            padding: 28px;
+            padding: 24px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .card h3 {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 10px;
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .card p {
-            font-size: 13.5px;
+        .stat-card h3 {
+            font-size: 15px;
+            font-weight: 600;
             color: var(--text-light);
+            margin-bottom: 8px;
+            text-transform: capitalize;
         }
 
-        .chart-container {
-            width: 100%;
-            height: 300px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .stat-card .value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 42px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .update-info {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
             color: var(--text-muted);
+        }
+
+        #error-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: #ffdddd;
+            color: #d8000c;
+            border-radius: 8px;
+            display: none;
+            /* Hidden by default */
         }
 
         footer {
@@ -193,62 +243,132 @@
             text-align: center;
             padding: 40px 48px;
             font-size: 13px;
+            margin-top: 80px;
         }
 
         footer span {
             color: var(--green);
             font-weight: 600;
         }
+
+        @media (max-width: 900px) {
+            main {
+                padding: 40px 24px;
+            }
+
+            nav {
+                padding: 14px 24px;
+            }
+        }
     </style>
 </head>
 
 <body>
-
     <nav>
         <a class="nav-logo" href="index.html">
-            <div class="logo-icon" style="background: none;">
-                <img src="images/logo.png" alt="Recybot Logo" style="width: 96px; height: 96px;">
+            <div class="logo-icon" style="background:none;">
+                <img src="images/logo.png" alt="Recybot Logo" style="width:96px;height:96px;">
             </div>
         </a>
         <div class="nav-right">
             <a href="index.html" class="nav-link">Accueil</a>
             <a href="statistics.html" class="nav-link">Statistiques</a>
-            <img src="images/emineslogo.webp" alt="Emines UM6P Logo" style="height: 28px;">
+            <img src="images/emineslogo.webp" alt="Emines UM6P Logo" style="height:28px;">
         </div>
     </nav>
 
-    <section>
-        <div class="text-center">
-            <span class="pill">DONNÉES</span>
-            <h2 class="section-title">Statistiques de Recyclage</h2>
-            <p class="section-sub">Analyse en temps réel des bouteilles traitées par SHREDDER 2.27.</p>
-        </div>
-
-        <div class="stats-grid">
-            <div class="card">
-                <h3>Bouteilles Acceptées vs. Rejetées</h3>
-                <div class="chart-container">
-                    <p>Graphique circulaire ici</p>
-                </div>
+    <main>
+        <div class="stats-header">
+            <div class="title-block">
+                <span class="pill">TABLEAU DE BORD</span>
+                <h2 class="section-title">Statistiques en Temps Réel</h2>
+                <p class="section-sub">Analyse des données collectées par le robot SHREDDER 2.27.</p>
             </div>
-            <div class="card">
-                <h3>Répartition par Marque</h3>
-                <div class="chart-container">
-                    <p>Graphique à barres ici</p>
-                </div>
+            <div class="live-indicator">
+                <div class="live-dot"></div>
+                <span class="live-text">Données en direct</span>
             </div>
         </div>
 
-        <div class="card" style="margin-top: 24px;">
-            <h3>Détails des Bouteilles</h3>
-            <p>Tableau de données ici</p>
+        <div id="stats-grid" class="stats-grid">
+            <!-- Les cartes de statistiques seront injectées ici par JavaScript -->
         </div>
-    </section>
+
+        <div id="error-message"></div>
+        <div id="update-info" class="update-info">Dernière mise à jour : --:--:--</div>
+    </main>
 
     <footer>
         <p>© 2025–2026 <span>SHREDDER 2.27</span> — Projet Robotique EMINES / UM6P · Ben Guérir, Maroc</p>
         <p style="margin-top:8px;font-size:12px;">Réalisé par 12 étudiants ingénieurs · S7–S8</p>
     </footer>
+
+    <script>
+        const CSV_URL = "https://script.google.com/macros/s/AKfycbwxkrl-DFBMUXlCSL54NbC_RpHjkFQqvkKzCmH0ADF4986fzwaiv3ZXILnVF93SK6iKMw/exec";
+        const REFRESH_INTERVAL = 30000; // 30 secondes
+
+        const statsGrid = document.getElementById('stats-grid');
+        const updateInfo = document.getElementById('update-info');
+        const errorMessage = document.getElementById('error-message');
+
+        async function fetchAndRender() {
+            try {
+                const response = await fetch(CSV_URL, { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP : ${response.status}`);
+                }
+                const csvText = await response.text();
+
+                parseAndRender(csvText);
+                errorMessage.style.display = 'none'; // Cacher le message d'erreur en cas de succès
+
+            } catch (error) {
+                console.error("Impossible de récupérer les données:", error);
+                errorMessage.textContent = `Erreur de chargement des données. Veuillez vérifier la console pour plus de détails.`;
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function parseAndRender(csvText) {
+            const lines = csvText.trim().split('\\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            const rows = lines.slice(1).map(line => line.split(',').map(l => l.trim()));
+
+            // Vider les anciennes cartes
+            statsGrid.innerHTML = '';
+
+            headers.forEach((header, index) => {
+                // Vérifier si la colonne est numérique
+                const isNumericColumn = rows.every(row => !isNaN(parseFloat(row[index])));
+
+                if (isNumericColumn) {
+                    const total = rows.reduce((sum, row) => {
+                        const value = parseFloat(row[index]);
+                        return sum + (isNaN(value) ? 0 : value);
+                    }, 0);
+
+                    const card = document.createElement('div');
+                    card.className = 'stat-card';
+                    card.innerHTML = `
+                        <h3>${header.replace(/_/g, ' ')}</h3>
+                        <div class="value">${total.toLocaleString('fr-FR')}</div>
+                    `;
+                    statsGrid.appendChild(card);
+                }
+            });
+
+            // Mettre à jour l'heure
+            const now = new Date();
+            updateInfo.textContent = `Dernière mise à jour : ${now.toLocaleTimeString('fr-FR')}`;
+        }
+
+        // Premier chargement au démarrage de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAndRender();
+            // Recharger les données toutes les 30 secondes
+            setInterval(fetchAndRender, REFRESH_INTERVAL);
+        });
+    </script>
 
 </body>
 
