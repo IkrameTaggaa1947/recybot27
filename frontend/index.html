@@ -71,8 +71,8 @@
         }
 
         .nav-logo .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: var(--green);
             border-radius: 8px;
             display: flex;
@@ -81,14 +81,14 @@
         }
 
         .nav-logo .logo-icon svg {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             fill: white;
         }
 
         .nav-logo .logo-icon img {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
         }
 
         .nav-right {
@@ -98,7 +98,7 @@
         }
 
         .nav-right img {
-            height: 36px;
+            height: 28px;
         }
 
         /* ── HERO ── */
@@ -499,542 +499,196 @@
             gap: 8px;
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
+        .tech-list li:last-child {
+            border-bottom: none;
         }
 
-        .team-member {
+        .tech-list li::before {
+            content: '▸';
+            color: var(--green);
+            font-size: 12px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ── FLUX ── */
+        .flux-wrap {
+            background: white;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            padding: 40px;
+            margin-top: 48px;
+            box-shadow: var(--shadow);
+        }
+
+        .flux-wrap h3 {
+            text-align: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 36px;
+            color: var(--text);
+        }
+
+        .flux-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .flux-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 110px;
+        }
+
+        .flux-circle {
+            width: 64px;
+            height: 64px;
+            background: var(--green-light);
+            border: 2px solid var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flux-circle svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--green);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .flux-step span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
             text-align: center;
         }
 
-        .team-member img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 12px;
-            border: 3px solid white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        .flux-arrow {
+            color: var(--green);
+            font-size: 22px;
+            margin: 0 8px;
+            margin-bottom: 22px;
         }
 
-        .team-member h4 {
+        /* ── OBJECTIFS PÉDA ── */
+        .peda-card {
+            background: white;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .peda-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .peda-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 14px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 2px;
+            color: var(--text-light);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
         }
 
-        .team-member p {
-            font-size: 12px;
-            color: var(--text-muted);
+        .peda-list li:last-child {
+            border-bottom: none;
+        }
+
+        .peda-list li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--text);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 40px 48px;
+            font-size: 13px;
+        }
+
+        footer span {
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 48px 24px;
+            }
+
+            .hero-left h1 {
+                font-size: 40px;
+            }
+
+            .cards-2,
+            .cards-3 {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 14px 24px;
+            }
+
+            section {
+                padding: 60px 24px;
+            }
+
+            .mission-wrap {
+                padding: 60px 24px;
+            }
         }
     </style>
-</head>
-
-<body>
-    <nav>
-        <a href="#" class="nav-logo">
-            <div class="logo-icon">
-                <img src="images/logo.png" alt="SHREDDER Logo" />
-            </div>
-        </a>
-        <div class="nav-right">
-            <img src="images/emineslogo.webp" alt="Emines Logo" />
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-left">
-            <h1>La Révolution du Recyclage à Votre Portée</h1>
-            <p>
-                Découvrez SHREDDER 2.27, la borne de recyclage qui identifie, trie
-                et compacte vos déchets pour un avenir plus vert.
-            </p>
-            <div class="hero-btns">
-                <a href="#video" class="btn-primary">
-                    <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
-                        <path
-                            d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z">
-                        </path>
-                    </svg>
-                    Voir la Démo
-                </a>
-                <a href="#contact" class="btn-outline">Nous Contacter</a>
-            </div>
-        </div>
-        <div class="hero-right">
-            <div class="robot-card robot-card-sm">
-                <div class="robot-3d robot-3d-sm">
-                    <!-- 3D model placeholder -->
-                </div>
-                <p>MODÈLE 3D</p>
-            </div>
-            <div class="robot-card">
-                <div class="robot-3d">
-                    <!-- 3D model placeholder -->
-                </div>
-                <p>SHREDDER 2.27</p>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <section class="mission-wrap">
-            <span class="pill">Notre Mission</span>
-            <h2 class="section-title">
-                Transformer Chaque Déchet en Opportunité
-            </h2>
-            <p class="section-sub">
-                SHREDDER 2.27 n'est pas juste une poubelle. C'est un système
-                intelligent qui utilise l'IA pour reconnaître les types de plastique
-                et de canettes, les trie, et les prépare pour le recyclage. Notre
-                objectif est de rendre le recyclage simple, efficace et gratifiant
-                pour tous.
-            </p>
-            <div class="cards-2">
-                <div class="card">
-                    <div class="card-icon">
-                        <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Identification par IA</h3>
-                    <p>
-                        Notre caméra intelligente analyse et identifie instantanément le
-                        type de déchet inséré.
-                    </p>
-                </div>
-                <div class="card card-dark">
-                    <div class="card-icon">
-                        <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
-                            <path
-                                d="M2.5 0a.5.5 0 0 1 .5.5V1h1V.5a.5.5 0 0 1 1 0V1h1V.5a.5.5 0 0 1 1 0V1h1V.5a.5.5 0 0 1 1 0V1h1V.5a.5.5 0 0 1 1 0V1h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V.5a.5.5 0 0 1 .5-.5M15 2H1v12h14zM1 3.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5m0 2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5m0 2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5m0 2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5m0 2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Tri Automatisé</h3>
-                    <p>
-                        Les déchets sont dirigés vers le compartiment approprié grâce à
-                        un système de tri mécanique précis.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-gradient">
-            <div class="text-center">
-                <span class="pill">Nos Modules</span>
-                <h2 class="section-title">Une Conception Modulaire et Robuste</h2>
-                <p class="section-sub">
-                    SHREDDER 2.27 est construit avec des composants de haute qualité
-                    pour assurer fiabilité et performance. Chaque module a été pensé
-                    pour une efficacité maximale.
-                </p>
-            </div>
-            <div class="cards-3">
-                <div class="module-card">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <!-- Icon placeholder -->
-                        </div>
-                        <div>
-                            <h3>Module de Broyage</h3>
-                            <p>Plastique et Canettes</p>
-                        </div>
-                    </div>
-                    <div class="module-img">
-                        <!-- Illustration placeholder -->
-                    </div>
-                    <div class="module-body">
-                        Réduit le volume des déchets pour un stockage optimisé et un
-                        recyclage facilité.
-                    </div>
-                </div>
-                <div class="module-card">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <!-- Icon placeholder -->
-                        </div>
-                        <div>
-                            <h3>Convoyeur</h3>
-                            <p>Transport Interne</p>
-                        </div>
-                    </div>
-                    <div class="module-img">
-                        <!-- Illustration placeholder -->
-                    </div>
-                    <div class="module-body">
-                        Achemine les déchets de l'entrée vers les zones de tri et de
-                        broyage.
-                    </div>
-                </div>
-                <div class="module-card">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <!-- Icon placeholder -->
-                        </div>
-                        <div>
-                            <h3>Interface Utilisateur</h3>
-                            <p>Écran Tactile</p>
-                        </div>
-                    </div>
-                    <div class="module-img">
-                        <!-- Illustration placeholder -->
-                    </div>
-                    <div class="module-body">
-                        Un écran simple et intuitif pour guider l'utilisateur et
-                        afficher les statistiques.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="video">
-            <div class="text-center">
-                <span class="pill">Démonstration</span>
-                <h2 class="section-title">Voyez SHREDDER 2.27 en Action</h2>
-                <p class="section-sub">
-                    Notre vidéo de démonstration vous montre le parcours d'un déchet,
-                    de son insertion à sa transformation.
-                </p>
-            </div>
-            <div style="
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-          ">
-                <iframe style="
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-            " src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </section>
-
-        <section class="bg-gradient">
-            <div class="text-center">
-                <span class="pill">L'Équipe</span>
-                <h2 class="section-title">Les Esprits derrière l'Innovation</h2>
-                <p class="section-sub">
-                    Une équipe passionnée de développeurs, designers et ingénieurs
-                    unis par une vision commune : un monde plus propre.
-                </p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="images/photo_professionnelle.jpg" alt="Ikrame TAGGAA" />
-                    <h4>Ikrame TAGGAA</h4>
-                    <p>Chef de Projet</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/bouchra.jpg" alt="Bouchra" />
-                    <h4>Bouchra</h4>
-                    <p>Développeuse IA</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/armel.jpeg" alt="Armel" />
-                    <h4>Armel</h4>
-                    <p>Ingénieur Mécanique</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/Ali.jpeg" alt="Ali" />
-                    <h4>Ali</h4>
-                    <p>Designer UI/UX</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/Abdellatif.jpg" alt="Abdellatif" />
-                    <h4>Abdellatif</h4>
-                    <p>Développeur Backend</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/Yahya RIGATI.jpg" alt="Yahya RIGATI" />
-                    <h4>Yahya RIGATI</h4>
-                    <p>Spécialiste IoT</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/Abdelwahab LAKSIRI.jpg" alt="Abdelwahab LAKSIRI" />
-                    <h4>Abdelwahab LAKSIRI</h4>
-                    <p>Marketing</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/Abdessamad HATIM.jpeg" alt="Abdessamad HATIM" />
-                    <h4>Abdessamad HATIM</h4>
-                    <p>Qualité & Test</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/Meryem AZZIZA.jpg" alt="Meryem AZZIZA" />
-                    <h4>Meryem AZZIZA</h4>
-                    <p>Communication</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/MOUSSAOUI AYMANE.jpg" alt="Aymane MOUSSAOUI" />
-                    <h4>Aymane MOUSSAOUI</h4>
-                    <p>Data Scientist</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/moussa.jpg" alt="Moussa" />
-                    <h4>Moussa</h4>
-                    <p>Stagiaire</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="text-center">
-                <span class="pill">Contact</span>
-                <h2 class="section-title">Contactez-nous</h2>
-                <p class="section-sub">
-                    Vous avez des questions ou souhaitez collaborer ? Remplissez le
-                    formulaire ci-dessous.
-                </p>
-            </div>
-            <form style="
-            max-width: 600px;
-            margin: 0 auto;
-            display: grid;
-            gap: 16px;
-          ">
-                <input type="text" placeholder="Nom" style="
-              padding: 12px;
-              border-radius: 8px;
-              border: 1px solid var(--border);
-            " />
-                <input type="email" placeholder="Email" style="
-              padding: 12px;
-              border-radius: 8px;
-              border: 1px solid var(--border);
-            " />
-                <textarea placeholder="Message" rows="5" style="
-              padding: 12px;
-              border-radius: 8px;
-              border: 1px solid var(--border);
-              resize: vertical;
-            "></textarea>
-                <button type="submit" class="btn-primary" style="justify-content: center">
-                    Envoyer
-                </button>
-            </form>
-        </section>
-    </main>
-
-    <footer style="
-        background: var(--green-mid);
-        padding: 40px 48px;
-        text-align: center;
-        margin-top: 60px;
-      ">
-        <p style="color: var(--green-dark); font-size: 14px">
-            &copy; 2024 SHREDDER 2.27. Tous droits réservés.
-        </p>
-    </footer>
-</body>
-
-</html>
-
-.tech-list li:last-child {
-border-bottom: none;
-}
-
-.tech-list li::before {
-content: '▸';
-color: var(--green);
-font-size: 12px;
-flex-shrink: 0;
-margin-top: 2px;
-}
-
-/* ── FLUX ── */
-.flux-wrap {
-background: white;
-border-radius: var(--radius);
-border: 1px solid var(--border);
-padding: 40px;
-margin-top: 48px;
-box-shadow: var(--shadow);
-}
-
-.flux-wrap h3 {
-text-align: center;
-font-family: 'DM Serif Display', serif;
-font-size: 26px;
-font-weight: 400;
-margin-bottom: 36px;
-color: var(--text);
-}
-
-.flux-steps {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 0;
-flex-wrap: wrap;
-}
-
-.flux-step {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 10px;
-min-width: 110px;
-}
-
-.flux-circle {
-width: 64px;
-height: 64px;
-background: var(--green-light);
-border: 2px solid var(--green);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.flux-circle svg {
-width: 28px;
-height: 28px;
-stroke: var(--green);
-fill: none;
-stroke-width: 2;
-}
-
-.flux-step span {
-font-size: 12px;
-font-weight: 600;
-color: var(--text-light);
-text-align: center;
-}
-
-.flux-arrow {
-color: var(--green);
-font-size: 22px;
-margin: 0 8px;
-margin-bottom: 22px;
-}
-
-/* ── OBJECTIFS PÉDA ── */
-.peda-card {
-background: white;
-border-radius: var(--radius);
-border: 1px solid var(--border);
-padding: 32px;
-box-shadow: var(--shadow);
-}
-
-.peda-list {
-list-style: none;
-margin-top: 16px;
-}
-
-.peda-list li {
-display: flex;
-align-items: center;
-gap: 10px;
-font-size: 14px;
-color: var(--text-light);
-padding: 8px 0;
-border-bottom: 1px solid var(--border);
-}
-
-.peda-list li:last-child {
-border-bottom: none;
-}
-
-.peda-list li::before {
-content: '✓';
-color: var(--green);
-font-weight: 700;
-}
-
-/* ── FOOTER ── */
-footer {
-background: var(--text);
-color: rgba(255, 255, 255, 0.6);
-text-align: center;
-padding: 40px 48px;
-font-size: 13px;
-}
-
-footer span {
-color: var(--green);
-font-weight: 600;
-}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-from {
-opacity: 0;
-transform: translateY(24px);
-}
-
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-.fade-up {
-animation: fadeUp 0.6s ease both;
-}
-
-.delay-1 {
-animation-delay: 0.1s;
-}
-
-.delay-2 {
-animation-delay: 0.2s;
-}
-
-.delay-3 {
-animation-delay: 0.3s;
-}
-
-.delay-4 {
-animation-delay: 0.4s;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-.hero {
-grid-template-columns: 1fr;
-padding: 48px 24px;
-}
-
-.hero-left h1 {
-font-size: 40px;
-}
-
-.cards-2,
-.cards-3 {
-grid-template-columns: 1fr;
-}
-
-nav {
-padding: 14px 24px;
-}
-
-section {
-padding: 60px 24px;
-}
-
-.mission-wrap {
-padding: 60px 24px;
-}
-}
-</style>
 </head>
 
 <body>
@@ -1043,11 +697,11 @@ padding: 60px 24px;
     <nav>
         <a class="nav-logo" href="#">
             <div class="logo-icon" style="background: none;">
-                <img src="images/recybot.png" alt="Recybot Logo" style="width: 96px; height: 96px;">
+                <img src="images/logo.png" alt="Recybot Logo" style="width: 96px; height: 96px;">
             </div>
         </a>
         <div class="nav-right">
-            <img src="images/emines-um6p-logo.png" alt="Emines UM6P Logo" style="height: 28px;">
+            <img src="images/emineslogo.webp" alt="Emines UM6P Logo" style="height: 28px;">
         </div>
     </nav>
 
@@ -1077,13 +731,14 @@ padding: 60px 24px;
             <!-- Robot card 1 — remplacer le SVG par <img src="total_vue.JPG"> -->
             <div class="robot-card fade-up delay-1">
                 <div class="robot-3d">
-                    <img src="total_vue.JPG" alt="Robot Card 1" style="max-width: 100%; height: auto;">
+                    <img src="images/system_broyage_without_bg.png" alt="Robot Card 1"
+                        style="max-width: 100%; height: auto;">
                 </div>
             </div>
             <!-- Robot card 2 — remplacer par <img src="total.JPG"> -->
             <div class="robot-card robot-card-sm fade-up delay-2">
                 <div class="robot-3d robot-3d-sm">
-                    <img src="total.JPG" alt="Robot Card 2" style="max-width: 100%; height: auto;">
+                    <img src="images/Untitled.JPG" alt="Robot Card 2" style="max-width: 100%; height: auto;">
                 </div>
             </div>
         </div>
@@ -1254,7 +909,7 @@ padding: 60px 24px;
                     </div>
                 </div>
                 <div class="module-img">
-                    <img src="convoyeur_without_bg.png" alt="Convoyeur" style="max-height:160px;">
+                    <img src="images/6.png" alt="Convoyeur" style="max-height:160px;">
                 </div>
                 <div class="module-body">
                     Le convoyeur reçoit la bouteille et l'achemine vers le broyeur via une bande entraînée par des
@@ -1279,7 +934,7 @@ padding: 60px 24px;
                     </div>
                 </div>
                 <div class="module-img">
-                    <img src="system_broyage_without_bg.png" alt="System Broyage" style="max-height:160px;">
+                    <img src="images/4.png" alt="System Broyage" style="max-height:160px;">
                 </div>
                 <div class="module-body">
                     Les lames sont entraînées par un moteur via un système de chaîne et pignons (rapport 9:1),
@@ -1302,7 +957,7 @@ padding: 60px 24px;
                     </div>
                 </div>
                 <div class="module-img">
-                    <img src="poussoir_without_bg.png" alt="Poussoir" style="max-height:160px;">
+                    <img src="images/5.png" alt="Poussoir" style="max-height:160px;">
                 </div>
                 <div class="module-body">
                     Le poussoir maintient les bouteilles en place pendant le broyage. Actionné par un système vis-écrou,
@@ -1822,7 +1477,7 @@ padding: 60px 24px;
         <div class="team-grid">
             <div class="team-card fade-up delay-1">
                 <div class="team-avatar">
-                    <img src="images/moussa.png" alt="Moussa Achakar"
+                    <img src="images/moussa.jpg" alt="Moussa Achakar"
                         style="width: 80px; height: 80px; border-radius: 50%;">
                 </div>
                 <h4>Moussa Achakar</h4>
@@ -1830,13 +1485,29 @@ padding: 60px 24px;
             </div>
             <div class="team-card fade-up delay-2">
                 <div class="team-avatar">
-                    <img src="images/ikrame_taggaa.jpg" alt="Ikrame Taggaa"
-                        style="width: 80px; height: 80px; border-radius: 50%;">
+                    <img src="images/photo_professionnelle.jpg" alt="Ikrame Taggaa"
+                        style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; object-position: top;">
                 </div>
                 <h4>Ikrame Taggaa</h4>
                 <p class="role">IA & Vision par Ordinateur</p><span class="role-tag">IA</span>
             </div>
             <div class="team-card fade-up delay-3">
+                <div class="team-avatar">
+                    <img src="images/Abdessamad%20HATIM.jpeg" alt="Abdessamad Hatim"
+                        style="width: 80px; height: 80px; border-radius: 50%;">
+                </div>
+                <h4>Abdessamad Hatim</h4>
+                <p class="role">IA & Vision par Ordinateur</p><span class="role-tag">IA</span>
+            </div>
+            <div class="team-card fade-up delay-4">
+                <div class="team-avatar">
+                    <img src="images/bouchra.jpg" alt="Bouchra Ezzaim"
+                        style="width: 80px; height: 80px; border-radius: 50%;">
+                </div>
+                <h4>Bouchra Ezzaim</h4>
+                <p class="role">IA & Vision par Ordinateur</p><span class="role-tag">IA</span>
+            </div>
+            <div class="team-card fade-up delay-1">
                 <div class="team-avatar">
                     <img src="images/Yahya%20RIGATI.jpg" alt="Yahya Rigati"
                         style="width: 80px; height: 80px; border-radius: 50%;">
@@ -1844,12 +1515,36 @@ padding: 60px 24px;
                 <h4>Yahya Rigati</h4>
                 <p class="role">Études Théoriques & Analyse</p><span class="role-tag">Théorie</span>
             </div>
-            <div class="team-card fade-up delay-4">
+            <div class="team-card fade-up delay-2">
                 <div class="team-avatar">
-                    <img src="images/zakira.jpg" alt="Abdellatif Zakira"
+                    <img src="images/labaihi.jpeg" alt="Mohamed Labaihi"
+                        style="width: 80px; height: 80px; border-radius: 50%;">
+                </div>
+                <h4>Mohamed Labaihi</h4>
+                <p class="role">Études Théoriques & Analyse</p><span class="role-tag">Théorie</span>
+            </div>
+            <div class="team-card fade-up delay-3">
+                <div class="team-avatar">
+                    <img src="images/Abdellatif.jpg" alt="Abdellatif Zakira"
                         style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; object-position: center; transform: scale(1.2);">
                 </div>
                 <h4>Abdellatif Zakira</h4>
+                <p class="role">Conception Mécanique</p><span class="role-tag">Mécanique</span>
+            </div>
+            <div class="team-card fade-up delay-4">
+                <div class="team-avatar">
+                    <img src="images/armel.jpeg" alt="Bitokalo Armel"
+                        style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: center;">
+                </div>
+                <h4>Bitokalo Armel</h4>
+                <p class="role">Conception Mécanique</p><span class="role-tag">Mécanique</span>
+            </div>
+            <div class="team-card fade-up delay-1">
+                <div class="team-avatar">
+                    <img src="images/MOUSSAOUI AYMANE.jpg" alt="Aymane MOUSSAOUI"
+                        style="width: 80px; height: 80px; border-radius: 50%;">
+                </div>
+                <h4>Aymane MOUSSAOUI</h4>
                 <p class="role">Conception Mécanique</p><span class="role-tag">Mécanique</span>
             </div>
             <div class="team-card fade-up delay-1">
@@ -1862,59 +1557,27 @@ padding: 60px 24px;
             </div>
             <div class="team-card fade-up delay-2">
                 <div class="team-avatar">
-                    <img src="images/achraf.jpg" alt="Mohamed Achraf Benlafqih"
+                    <img src="images/Meryem%20AZZIZA.jpg" alt="Meryem Azziza"
+                        style="width: 80px; height: 80px; border-radius: 50%;">
+                </div>
+                <h4>Meryem Azziza</h4>
+                <p class="role">Architecture Électrique</p><span class="role-tag">Électrique</span>
+            </div>
+            <div class="team-card fade-up delay-3">
+                <div class="team-avatar">
+                    <img src="images/Achraf.jpeg" alt="Mohamed Achraf Benlafqih"
                         style="width: 80px; height: 80px; border-radius: 50%;">
                 </div>
                 <h4>M. Achraf Benlafqih</h4>
                 <p class="role">Communication & Médiatisation</p><span class="role-tag">Marketing</span>
             </div>
-            <div class="team-card fade-up delay-3">
-                <div class="team-avatar">
-                    <img src="images/Meryem%20AZZIZA.jpg" alt="Meryem Azziza"
-                        style="width: 80px; height: 80px; border-radius: 50%;">
-                </div>
-                <h4>Meryem Azziza</h4>
-                <p class="role">Ingénierie & Développement</p><span class="role-tag">Dev</span>
-            </div>
             <div class="team-card fade-up delay-4">
-                <div class="team-avatar">
-                    <img src="images/bouchra.jpg" alt="Bouchra Ezzaim"
-                        style="width: 80px; height: 80px; border-radius: 50%;">
-                </div>
-                <h4>Bouchra Ezzaim</h4>
-                <p class="role">Ingénierie & Développement</p><span class="role-tag">Dev</span>
-            </div>
-            <div class="team-card fade-up delay-1">
-                <div class="team-avatar">
-                    <img src="images/baihi.jpg" alt="Mohamed Labaihi"
-                        style="width: 80px; height: 80px; border-radius: 50%;">
-                </div>
-                <h4>Mohamed Labaihi</h4>
-                <p class="role">Ingénierie & Développement</p><span class="role-tag">Dev</span>
-            </div>
-            <div class="team-card fade-up delay-2">
                 <div class="team-avatar">
                     <img src="images/Abdelwahab%20LAKSIRI.jpg" alt="Abdelwahab Laksiri"
                         style="width: 80px; height: 80px; border-radius: 50%;">
                 </div>
                 <h4>Abdelwahab Laksiri</h4>
-                <p class="role">Ingénierie & Développement</p><span class="role-tag">Dev</span>
-            </div>
-            <div class="team-card fade-up delay-3">
-                <div class="team-avatar">
-                    <img src="images/Abdessamad%20HATIM.jpeg" alt="Abdessamad Hatim"
-                        style="width: 80px; height: 80px; border-radius: 50%;">
-                </div>
-                <h4>Abdessamad Hatim</h4>
-                <p class="role">Ingénierie & Développement</p><span class="role-tag">Dev</span>
-            </div>
-            <div class="team-card fade-up delay-4">
-                <div class="team-avatar">
-                    <img src="images/armel.jpeg" alt="Bitokalo Armel"
-                        style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: center;">
-                </div>
-                <h4>Bitokalo Armel</h4>
-                <p class="role">Ingénierie & Développement</p><span class="role-tag">Dev</span>
+                <p class="role">Communication & Médiatisation</p><span class="role-tag">Marketing</span>
             </div>
         </div>
     </div>
